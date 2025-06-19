@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 
 export default function Progresso() {
   const [pesos, setPesos] = useState([]);
@@ -6,7 +7,10 @@ export default function Progresso() {
 
   const adicionarPeso = () => {
     if (novoPeso) {
-      setPesos([...pesos, { valor: parseFloat(novoPeso), data: new Date().toLocaleDateString() }]);
+      setPesos([...pesos, {
+        valor: parseFloat(novoPeso),
+        data: new Date().toLocaleDateString()
+      }]);
       setNovoPeso("");
     }
   };
@@ -25,7 +29,19 @@ export default function Progresso() {
           Registrar
         </button>
       </div>
-      <div>
+
+      {pesos.length > 1 && (
+        <ResponsiveContainer width="100%" height={200}>
+          <LineChart data={pesos}>
+            <XAxis dataKey="data" />
+            <YAxis />
+            <Tooltip />
+            <Line type="monotone" dataKey="valor" stroke="#10b981" />
+          </LineChart>
+        </ResponsiveContainer>
+      )}
+
+      <div className="mt-4">
         <h2 className="font-bold mb-2">Histórico:</h2>
         <ul>
           {pesos.map((item, idx) => (
