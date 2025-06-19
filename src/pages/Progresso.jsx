@@ -1,0 +1,1 @@
+export default function Progresso() { return <div>Progresso (em construção)</div>; }

@@ -1,0 +1,1 @@
+export default function Fotos() { return <div>Fotos (em construção)</div>; }

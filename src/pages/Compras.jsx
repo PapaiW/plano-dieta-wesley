@@ -1,0 +1,1 @@
+export default function Compras() { return <div>Compras (em construção)</div>; }

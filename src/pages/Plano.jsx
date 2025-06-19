@@ -1,0 +1,1 @@
+export default function Plano() { return <div>Plano (em construção)</div>; }
